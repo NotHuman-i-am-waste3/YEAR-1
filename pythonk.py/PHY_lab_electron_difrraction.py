@@ -1,0 +1,23 @@
+from math import*
+voltage=float(input('enter voltage in Kv '))
+lc=float(input('enter Lc : '))
+L=float(input('enter L in mm :'))
+d_for_ring1=int(input('enter d for ring1 in pm '))
+d_for_ring2=int(input('enter d for ring2 in pm'))
+print('MSR,VSC readings for ring1 by space ')
+r1=list(map(float,input().split()))
+print('MSR,VSC readings for ring2 by space ')
+r2=list(map(float,input().split()))
+a=r1[0]+(lc*r1[1])
+b=r2[0]+(lc*r2[1])
+print('tsr for ring1 :',a)
+print('tsr for ring1 :',b)
+c=(d_for_ring1*(10**-12)*a*(10**-3))/(2*L*(10**-3))
+d=(d_for_ring2*(10**-12)*b*(10**-3))/(2*L*(10**-3))
+mean=(c+d)/2
+print('braggs wavelength in m for ring1 :',c*(10**12),'*','10^-12 meter')
+print('braggs wavelength for in m ring1 :',d*(10**12),'*','10^-12 meter')
+deb=(6.26*(10**-34))/sqrt(2*9.1*(10**-31)*1.6*(10**-19)*voltage*1000)
+print('debrogile wavelengt :',deb*(10**12),'*','10^-12 meter')
+print('at',voltage, 'debrogile wave length',deb*(10**12),'*','10^-12 meter','brags wavelength is',mean*(10**12),'*','10^-12 meter' )
+
